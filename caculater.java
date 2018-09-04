@@ -116,7 +116,7 @@ public class caculate extends JFrame {
 						String skr = stack_sign.peek();
 						int a = Map.get(temp.sign);
 						int b = Map.get(skr);
-						if(a < b){
+						if(a < b&&!temp.sign.equals(")")){
 							Float x = stack_num.pop();
 							Float y = stack_num.pop();
 						
@@ -166,6 +166,7 @@ public class caculate extends JFrame {
 		}else{
 			str += s;
 			Struct struct = new Struct(1,null,ss);
+			System.out.println(ss);
 			list.add(struct);
 			ss = "";
 			ss += s;
@@ -192,18 +193,7 @@ public class caculate extends JFrame {
 		JButton Button1 = new JButton("1");
 		Button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(bool()){
-					str += "1";
-					ss += "1";
-					textField.setText(str);
-					textField_1.setText(ss);
-				}else{
-					str += "1";
-					ss = "";
-					ss += "1";
-					textField.setText(str);
-					textField_1.setText(ss);
-				}
+				func("1");
 			}
 		});
 		Button1.setBounds(76, 112, 81, 41);
@@ -293,10 +283,15 @@ public class caculate extends JFrame {
 		Add = new JButton("+");
 		Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0'){
+				if((str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0')||str.charAt(str.length()-1)==')'){
+					if(str.charAt(str.length()-1)==')'){
+						Struct struct = new Struct(1,null,")");
+						list.add(struct);
+					}else{
+						Struct struct = new Struct(0,Float.valueOf(ss),null);
+						list.add(struct);
+					}
 					str += "+";
-					Struct struct = new Struct(0,Float.valueOf(ss),null);
-					list.add(struct);
 					ss = "";
 					ss += "+";
 					textField.setText(str);
@@ -310,10 +305,31 @@ public class caculate extends JFrame {
 		Sub = new JButton("-");
 		Sub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0'){
+				if(str.length() == 0||str.charAt(str.length()-1)=='('){
+					if(str.length() != 0&&str.charAt(str.length()-1)=='('){
+						Struct struct = new Struct(1,null,"(");
+						list.add(struct);
+						System.out.println("x");
+					}
+					Struct struct_2 = new Struct(0,(float)0,null);
+					list.add(struct_2);
+					System.out.println("x"+list.size());
 					str += "-";
-					Struct struct = new Struct(0,Float.valueOf(ss),null);
-					list.add(struct);
+					
+					ss = "";
+					ss += "-";
+					textField.setText(str);
+					textField_1.setText(ss);
+				}
+				else if((str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0')||str.charAt(str.length()-1)==')'){
+					if(str.charAt(str.length()-1)==')'){
+						Struct struct = new Struct(1,null,")");
+						list.add(struct);
+					}else{
+						Struct struct = new Struct(0,Float.valueOf(ss),null);
+						list.add(struct);
+					}
+					str += "-";
 					ss = "";
 					ss += "-";
 					textField.setText(str);
@@ -327,10 +343,15 @@ public class caculate extends JFrame {
 		Mul = new JButton("*");
 		Mul.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0'){
+				if((str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0')||str.charAt(str.length()-1)==')'){
+					if(str.charAt(str.length()-1)==')'){
+						Struct struct = new Struct(1,null,")");
+						list.add(struct);
+					}else{
+						Struct struct = new Struct(0,Float.valueOf(ss),null);
+						list.add(struct);
+					}
 					str += "*";
-					Struct struct = new Struct(0,Float.valueOf(ss),null);
-					list.add(struct);
 					ss = "";
 					ss += "*";
 					textField.setText(str);
@@ -344,10 +365,15 @@ public class caculate extends JFrame {
 		Div = new JButton("¡Â");
 		Div.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0'){
+				if((str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0')||str.charAt(str.length()-1)==')'){
+					if(str.charAt(str.length()-1)==')'){
+						Struct struct = new Struct(1,null,")");
+						list.add(struct);
+					}else{
+						Struct struct = new Struct(0,Float.valueOf(ss),null);
+						list.add(struct);
+					}
 					str += "/";
-					Struct struct = new Struct(0,Float.valueOf(ss),null);
-					list.add(struct);
 					ss = "";
 					ss += "/";
 					textField.setText(str);
