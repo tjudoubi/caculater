@@ -727,6 +727,8 @@ public class caculator extends JFrame {
 		btnNewButton = new JButton("10^x");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				func("1");
+				func("0");
 				if((str.charAt(str.length()-1)<='9'&&str.charAt(str.length()-1) >= '0')||str.charAt(str.length()-1)==')'){
 					if(str.charAt(str.length()-1)==')'){
 						Struct struct = new Struct(1,null,")");
@@ -737,11 +739,8 @@ public class caculator extends JFrame {
 							list.add(struct);
 						}
 					}
-					str += "10^";
+					str += "^";
 					ss = "";
-					ss += "10";
-					Struct struct = new Struct(0,(float)10,null);
-					list.add(struct);
 					ss = "";
 					ss += "^";
 					textField.setText(str);
