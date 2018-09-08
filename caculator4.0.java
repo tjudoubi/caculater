@@ -141,37 +141,39 @@ public class caculator extends JFrame {
 	
 	
 	private void make_sentence(String s,int flag){
-		System.out.println("input: "+s);
+		
 		if(flag == 0){
+			System.out.println("input: "+s);
 			Struct struct = new Struct(0,Float.valueOf(s),null);
 			list.add(struct);
 		}else{
-			if(str.charAt(str.length()-1)=='l'){
+			System.out.println("input: "+s);
+			if(s.charAt(s.length()-1)=='l'){
 				Struct struct = new Struct(0,(float)1,null);
 				list.add(struct);
 				struct = new Struct(1,null,s);
 				list.add(struct);
-			}else if(str.charAt(str.length()-1)=='s'){
+			}else if(s.charAt(s.length()-1)=='s'){
 				Struct struct = new Struct(0,(float)1,null);
 				list.add(struct);
 				struct = new Struct(1,null,s);
 				list.add(struct);
-			}else if(str.charAt(str.length()-1)=='c'){
+			}else if(s.charAt(s.length()-1)=='c'){
 				Struct struct = new Struct(0,(float)1,null);
 				list.add(struct);
 				struct = new Struct(1,null,s);
 				list.add(struct);
-			}else if(str.charAt(str.length()-1)=='t'){
+			}else if(s.charAt(s.length()-1)=='t'){
 				Struct struct = new Struct(0,(float)1,null);
 				list.add(struct);
 				struct = new Struct(1,null,s);
 				list.add(struct);
-			}else if(str.charAt(str.length()-1)=='¡Ì'){
+			}else if(s.charAt(s.length()-1)=='¡Ì'){
 				Struct struct = new Struct(0,(float)1,null);
 				list.add(struct);
 				struct = new Struct(1,null,s);
 				list.add(struct);
-			}else if(str.charAt(str.length()-1)=='!'){
+			}else if(s.charAt(s.length()-1)=='!'){
 				Struct struct = new Struct(1,null,s);
 				list.add(struct);
 				struct = new Struct(0,(float)1,null);
