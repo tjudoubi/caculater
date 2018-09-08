@@ -206,6 +206,10 @@ public class caculator extends JFrame {
 				ss_num = ss_num + '.';
 				ss_sign = "";
 			}else{
+				if(str.charAt(i)=='-'&&(i == 0||str.charAt(i-1)=='(')){///////不能只考虑减法操作，还要考虑负数的输入问题，可将负数转化为表达式，比如 "-12" 转化为 "0-12"
+					ss_num = ss_num + "0";
+					make_sentence(ss_num,0);
+				}
 				ss_sign = ""+str.charAt(i);
 				ss_num = "";
 				make_sentence(ss_sign,1);
